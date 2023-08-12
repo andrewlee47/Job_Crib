@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang = "en" >
+<head>
+    <meta charset = "UTF-8" >
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0" >
+    <title>CareerBuilder </title>
+    <!link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" - - >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        #banner{
+               object-fit: cover;
+               width: 100%;
+               height: 500px;
+        }
+
+        #text{
+
+            text-align: center;
+        }
+    </style>
+ </head>
+
+<body>
+<div class="container" >
+        <h1 class="text-center mt-2 mb-4">
+            CareerBuilder
+        </h1>
+
+
+        <img class="img-fluid" id="banner" src="http://127.0.0.1:5000/static/banner2.jpg">
+
+        <h2 class="text-center mt-4 mb-4">About CareerBuilder</h2>
+        <p class="display-4" id="text">
+            Helps you find the right job, unleash those hidden potentials...
+        </p>
+
+
+        <h2 class="text-center">Open positions</h2>
+
+        <div>
+            {% for jobs in jobs %}
+
+                {% include 'jobItems.html' %}
+
+            {% endfor %}
+        </div>
+
+    <div style="text-align:center;">
+        <button class="btn btn-primary btn-lg">Contact Us</button>
+    </div>
+
+    <div style="text-align:center; margin-top:20px;">Copyright 2023, CareerBuilder</div>
+
+</div>
+</body>
+
+
+</html>
