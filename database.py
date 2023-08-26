@@ -18,6 +18,7 @@ def load_jobs_db():
         for row in result:
             job_dict = {column.lower(): value for column, value in zip(column_names, row)}
             Jobs.append(job_dict)
-        return Jobs
+        print(Jobs)
+load_jobs_db()
 
 
