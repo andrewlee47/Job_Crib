@@ -1,40 +1,6 @@
-           h1{
-                font-family: 'Arial';
-                font-size: 50px;
-                color: rgb(96, 96, 96);
-                text-align: center;
-            }
+.over_view{
+            font-family:'Tahoma';
+            color: blue;
+            font-size: 30px;
 
-           #banner{
-            object-fit:cover;
-           }
-       h2{
-            font-family: 'Arial';
-            font-size:35px;
-            color: rgb(96, 96, 96);
-            text-align: center;
-       }
-        .about{
-                font-family: 'Arial';
-                color:rgb(96, 96, 96);
-                font-weight: bold;
-                text-align: center;
-
-            }
-         .about_career{
-                font-family:'Tahoma';
-                font-size: 20px;
-                font-weight: bold;
-                color:white;
-                background-color: black;
-                padding-top:10px;
-                padding-bottom:10px;
-                padding-right:10px;
-                padding-left:10px;
-           }
-
-          #container{
-                max-width: 750px;
-                margin: 0 auto;
-          }
-
+    }

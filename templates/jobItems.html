@@ -1,22 +1,20 @@
  <div class="border-bottom row" style="font-size:25px;">
      <div class="col-9 ">
-                <b style="color:rgb(120,120,120);">{{jobs["TITLE"]}}</b>
+                <b style="color:rgb(120,120,120);">{{job["title"]}}</b>
 
         <div>
-            <b>Location: </b>{{jobs['LOCATION']}}
+            <b>Location: </b>{{ job['location'] }}
         </div>
-        {% if 'WAGES' in jobs %}
+            {% if 'salary' in job %}
         <div style="margin-bottom:10px;">
-            <b>Wages: </b>{{jobs['WAGES']}}
+            <b>Salary: </b>{{ job['salary'] }}
         </div>
          {% endif %}
      </div>
 
-        <div class="col-3">
-           <a href=" mailto:andrewbabatunde97@gmail.com?subject=Application%20for%20{{jobs['TITLE']}}&body=My%20name%20%3Cyour%20name%3E%0D%0A%0D%0AResume%20%3Cresume%20link%3E%0D%0A%0D%0ALinkedIn%20%3Cyour%20link%3E "
-               type="button" class="btn  btn-outline-primary">Apply</a>
-
-        </div>
+     <div class="col-3 mt-4" >
+             <button type="button" class="btn btn-outline-primary">Apply </button>
+     </div>
 
 
  </div>
