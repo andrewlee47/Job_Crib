@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify
-from database import load_jobs_db
+from database import load_jobs_db, job_details_db
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -12,6 +12,12 @@ app.static_folder = 'static'
 def careerbuilder():
     Job_list = load_jobs_db()
     return render_template('home.html', jobs=Job_list)
+
+
+@app.route("/job/<id>")
+def display_job(id):
+    job = job_details_db(id)
+    return render_template('jobpage.html', job=job)
 
 
 @app.route("/api/jobs")

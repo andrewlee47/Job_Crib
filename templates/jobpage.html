@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{job.title}}</title>
+
+        {% include 'bootstrap.html' %}
+
+     <style>
+
+        .container{
+                margin-left: 120px;
+                margin-right: 150px;
+                font-family: Courier;
+                margin-top: 30px;
+
+
+        }
+        .title{
+            font-size: 35px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .location, .salary{
+            font-weight: 200;
+        }
+
+        .container2{
+            margin-left: 150px;
+            margin-right: 50px;
+            width:85vw;
+            height: 100vh;
+            margin-top: 15px;
+
+
+        }
+        .res-head, .require-head{
+            font-family: Courier;
+            font-weight: bold;
+            margin-left: 20px;
+
+        }
+
+        .res-txt, .require-txt{
+                    font-size: 16px;
+                    font-family: Courier;
+
+            }
+
+        .salary{
+                font-family: Courier;
+                font-weight: bold;
+        }
+
+
+    </style>
+
+</head>
+<body class="text-bg-light">
+
+    {% include 'navbar.html'%}
+
+<div class="container">
+
+        <div> <h3 class="title">{{job.title}}</h3></div>
+
+        <div>
+
+            <h3 class="location">Location</h3>
+            <p>{{job.location}}</p>
+
+        </div>
+
+
+</div>
+
+    <div class="container2">
+
+            <div><h3 class="res-head"  style="margin-top:20px;">Responsibilities</h3></div>
+            <ul>
+                {% for line in job.responsibilities.split("\n") %}
+                <li class="res-txt">{{ line }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3 class="require-head">Requirement</h3>
+            <ul>
+                {% for line in job.requirement.split("\n") %}
+                <li class="require-txt">{{ line }}</li>
+                {% endfor %}
+            </ul>
+            </ul>
+
+
+             <h3 class="salary">Salary</h3>
+            <p class="salary">{{job.currency}}{{job.salary}}</p>
+
+
+    </div>
+
+    <div style="color:white;">
+            {% include 'footer.html' %}
+
+    </div>
+
+
+
+</body>
+</html>

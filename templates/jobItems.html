@@ -2,18 +2,14 @@
      <div class="col-9 ">
                 <b style="color:rgb(120,120,120);">{{job["title"]}}</b>
 
-        <div>
+        <div class="mb-4">
             <b>Location: </b>{{ job['location'] }}
         </div>
-            {% if 'salary' in job %}
-        <div style="margin-bottom:10px;">
-            <b>Salary: </b>{{ job['salary'] }}
-        </div>
-         {% endif %}
+
      </div>
 
      <div class="col-3 mt-4" >
-             <button type="button" class="btn btn-outline-primary">Apply </button>
+             <a href="/job/{{ job['id'] }}" type="button" class="btn btn-outline-primary">Apply</a>
      </div>
 
 
