@@ -50,6 +50,10 @@
         .salary{
                 font-family: Courier;
                 font-weight: bold;
+                margin-bottom: 25px;
+        }
+        .salary1{
+            margin-bottom: 40px;
         }
 
 
@@ -93,12 +97,13 @@
 
 
              <h3 class="salary">Salary</h3>
-            <p class="salary">{{job.currency}}{{job.salary}}</p>
+            <p class="salary1">{{job.currency}}{{job.salary}}</p>
 
+            <div>{% include 'form.html' %}</div>
 
     </div>
 
-    <div style="color:white;">
+    <div style="margin-top: 800px;">
             {% include 'footer.html' %}
 
     </div>

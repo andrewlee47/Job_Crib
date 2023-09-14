@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application</title>
+
+    <style>
+
+        h4{
+            font-family: Courier;
+            font-size: 50px;
+        }
+
+        div{
+            font-family: Courier;
+             font-size: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <h4> Application for the role of {{job ['title']}}</h4>
+
+    <h4>Full name</h4>
+    <div> {{ application['full_name']}}</div>
+
+    <h4>Email</h4>
+    <div> {{ application['email']}}</div>
+
+    <h4>Phone number</h4>
+    <div> {{ application['phone_number']}}</div>
+
+    <h4>Year of experience</h4>
+    <div> {{ application['Experience']}}</div>
+
+
+</body>
+</html>

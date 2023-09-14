@@ -1,6 +1,6 @@
-
 from sqlalchemy import create_engine, text
 import os
+
 
 
 database_url = os.environ.get('AWS_URL')
@@ -23,18 +23,12 @@ def load_jobs_db():
 
 def job_details_db(id):
     with engine.connect() as conn:
-        result = conn.execute(text("SELECT * FROM Jobs WHERE id = :val"), {'val':id})
+        result = conn.execute(text("SELECT * FROM Jobs WHERE id = :val"), {'val': id})
 
-    row = result.fetchone()
-    if row is None:
-        return None
-    else:
-        column_names = result.keys()  # Get column names from the result
-        job_details = {column: value for column, value in zip(column_names, row)}
-        return job_details
-
-job_details_db(id)
-
-
-
-
+        row = result.fetchone()
+        if row is None:
+            return None
+        else:
+            column_names = result.keys()  # Get column names from the result
+            job_details = {column: value for column, value in zip(column_names, row)}
+            return job_details
