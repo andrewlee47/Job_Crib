@@ -1,20 +1,13 @@
 import os.path
 
 from flask import Flask, render_template, jsonify, request
-
-from database import load_jobs_db, job_details_db, text, engine
 from werkzeug.utils import secure_filename
+from database import load_jobs_db, job_details_db, text, engine
 
 app = Flask(__name__)
-app.static_folder = 'static'
-
-UPLOAD_FOLDER = 'uploads'
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
-
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
+#homepage route
 @app.route("/")
 def careerbuilder():
     Job_list = load_jobs_db()
@@ -30,12 +23,17 @@ def display_job(id):
         return "Not found", 404
     return render_template('jobpage.html', job = job)
 
+#User uploaded files save directly to a folder on my pc
+app.static_folder = 'static'
+UPLOAD_FOLDER = "C:/Users/hp/Desktop/uploaded resumes files"
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
-@app.route("/job/<id>/apply", methods = ['POST'])
-def job_application(id):
-    data = request.form
-    job = load_jobs_db()
 
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+#Resume files save path
+def add_job(job_id, data):
     if 'Resume' in request.files:
         resume_files = request.files['Resume']
         if resume_files.filename != '':
@@ -43,12 +41,14 @@ def job_application(id):
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             resume_files.save(file_path)
 
+#saving every application to the database
     with engine.connect() as conn:
         query = text(
-            "INSERT INTO Applications (full_name, email, phone_number, experience, linkedIn, Resumes)"
-            " VALUES (:full_name, :email, :phone_number, :experience, :linkedin, :resume_path)")
+            "INSERT INTO Applications (job_id,full_name, email, phone_number, experience, linkedIn, Resumes)"
+            " VALUES (:job_id, :full_name, :email, :phone_number, :experience, :linkedin, :resume_path)")
 
         conn.execute(query, {
+            'job_id': job_id,
             'full_name': data['full_name'],
             'email': data['email'],
             'phone_number': data['phone_number'],
@@ -58,6 +58,15 @@ def job_application(id):
         })
 
         conn.commit()
+
+
+@app.route("/job/<id>/apply", methods = ['POST'])
+def job_application(id):
+    data = request.form
+    job = job_details_db(id)
+    add_job(id, data)
+
+
 
     return render_template('submitted_application.html', application = data, job = job)
 
