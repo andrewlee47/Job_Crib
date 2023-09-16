@@ -3,6 +3,7 @@ import os
 
 
 
+#connect to cloud database
 database_url = os.environ.get('AWS_URL')
 
 engine = create_engine(database_url, pool_pre_ping=True)
